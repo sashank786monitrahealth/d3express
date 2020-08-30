@@ -10,6 +10,7 @@ const port = 3000;
 const app = express();
 app.engine('.hbs', expressHbs({defaultLayout:'layout', extname:'.hbs'}))
 app.set('view engine','.hbs')
+app.use(express.static(path.join(__dirname,'public')))
 app.set('views', path.join(__dirname,
     'views'))
 // once we have the application object - we need to tell it to listen to GET
