@@ -1,0 +1,7 @@
+npm init
+npm install express express-handlebars --save
+mkdir public routes views
+cd public
+mkdir css js data
+cd ..
+touch app.js
