@@ -17,4 +17,4 @@ const circle = svg.append('circle')
                 .attr('r','100px')
                 .style('fill','purple')
                 .style('stroke','chartreuse')
-                .style('stroke-width','10px');
+                .style('stroke-width',15); // 15 pixels
