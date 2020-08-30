@@ -11,3 +11,10 @@ const svg = d3.select("body")
   .attr('width',window.innerWidth)
   .attr('height',window.innerHeight);
 
+const circle = svg.append('circle')
+                .attr('cx',window.innerWidth/2)
+                .attr('cy',window.innerHeight/2)
+                .attr('r','100px')
+                .style('fill','purple')
+                .style('stroke','chartreuse')
+                .style('stroke-width','10px');
