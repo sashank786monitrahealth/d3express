@@ -14,7 +14,7 @@ const svg = d3.select('body')
               .append('svg')
               .style('width',window.innerWidth)
               .style('height', window.innerHeight)
-              .style('background-color','navy');
+              .style('background-color','none');
 
 const data = Array(3000).fill().map( _ => {
     return {
@@ -22,6 +22,10 @@ const data = Array(3000).fill().map( _ => {
         cy: Math.round(Math.random() * height)
     }
 });
+
+// colorGenerator - color scale
+
+const colorScale = d3.scaleOrdinal(d3.schemeCategory10)
 
 svg.selectAll('circle')
    .data(data)
@@ -33,5 +37,9 @@ svg.selectAll('circle')
    .attr('cy', function(d){
        return d.cy;
    })
-   .attr('r', '10px')
-   .style('fill','pink');
+   .attr('r', (d,i) => {
+       return i%2 === 0 ? 10 : 5
+   })
+   .style('fill',(d,i) => colorScale(i))
+   .style('stroke','yellow')
+   .style('stroke-width','1px');
