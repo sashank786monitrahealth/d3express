@@ -37,3 +37,18 @@ const circles1 = svg.selectAll('.circle1')
                     .attr('r', 3)
                     .style('fill', (d,i) => colorScale(i))
                     ;
+
+
+
+                    const circles2 = svg.selectAll('.circle2')
+                    .data(data)
+                    .enter()
+                    .append('circle')
+                    .attr('class','circle2')
+                    .attr('cx', d => d.cx)
+                    .attr('cy', d => d.cy)
+                    .attr('r', 3)
+                    .style('fill', "none")
+                    .style('stroke', "green")
+                    .style('stroke-width',1)
+                    ;
