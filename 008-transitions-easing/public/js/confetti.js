@@ -34,6 +34,8 @@ svg.selectAll('circle')
    .attr('cx', function(d){
        return d.cx;
    })
+   .attr('cy',-10)
+   .transition().duration(5000)
    .attr('cy', function(d){
        return d.cy;
    })
