@@ -35,7 +35,7 @@ svg.selectAll('circle')
        return d.cx;
    })
    .attr('cy',-10)
-   .transition().duration(100).delay((d,i) => i*5)
+   .transition().duration(100).delay((d,i) => i).ease(d3.easeBounce)
    .attr('cy', function(d){
        return d.cy;
    })
