@@ -25,3 +25,11 @@ circle.on('click',function(d,i){
   d3.select(this).transition().duration(2000)
   .attr('r','50px')
 })
+
+circle.on('mouseover',function(d,i){
+  d3.select(this).style('fill','yellow')
+})
+
+circle.on('mouseout',function(d,i){
+  d3.select(this).style('fill','purple')
+})
