@@ -22,4 +22,5 @@ const circle = svg.append('circle')
 circle.on('click',function(d,i){
   console.log(this);
   console.log(d3.select(this));
+  d3.select(this).attr('r','50px')
 })
