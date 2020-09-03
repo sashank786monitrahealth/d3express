@@ -27,7 +27,7 @@ const data = Array(3000).fill().map( _ => {
 
 const colorScale = d3.scaleOrdinal(d3.schemeCategory10)
 
-svg.selectAll('circle')
+const circle = svg.selectAll('circle')
    .data(data)
    .enter()
    .append("circle")
@@ -35,7 +35,16 @@ svg.selectAll('circle')
        return d.cx;
    })
    .attr('cy',-10)
-   .transition().duration(100).delay((d,i) => i).ease(d3.easeBounce)
+   .style('stroke','black')
+   .style('stroke-width','1px');
+
+   circle.on('click',function(d,i){
+       d3.select(this)
+         .transition().duration(250)
+         .style('fill','red')
+   })
+
+   circle.transition().duration(100).delay((d,i) => i).ease(d3.easeBounce)
    .attr('cy', function(d){
        return d.cy;
    })
