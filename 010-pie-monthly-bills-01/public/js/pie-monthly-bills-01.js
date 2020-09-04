@@ -14,7 +14,8 @@ d3.csv('/data/bills.csv').then(data=>{
                    .attr('transform',`translate(${width/2}, ${height/2})`);
 
     const pie = d3.pie().value(d => d.cost_percent).sort(null);
-    const arc = d3.arc().innerRadius(0).outerRadius(radius * 1);
+    const arc = d3.arc().innerRadius(0).outerRadius(radius * 0.9);
+    const hoverArc = d3.arc().innerRadius(0).outerRadius(radius *1)
 
     const g = svg.selectAll('.arc')
                  .data(pie(data))
@@ -29,7 +30,14 @@ d3.csv('/data/bills.csv').then(data=>{
      .style('fill-opacity',0.8)
      .style('stroke','#OEOB16')
      .style('stroke-width','10px')
-     .style('text-shadow','2px 2px #0E0B16');
+     //.style('text-shadow','2px 2px #0E0B16')
+     .on('mouseover',function(d,i){
+         d3.select(this)
+           .style('fill-opacity', 1)
+           .transition().duration(500)
+           .attr('d',hoverArc)
+
+     });
 
     g.append('text')
      .attr('transform', d => `translate(${arc.centroid(d)})`)
