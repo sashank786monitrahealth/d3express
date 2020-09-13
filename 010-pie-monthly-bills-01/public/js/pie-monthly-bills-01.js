@@ -37,6 +37,13 @@ d3.csv('/data/bills.csv').then(data=>{
            .transition().duration(500)
            .attr('d',hoverArc)
 
+     })
+     .on('mouseout', function(d,i){
+        d3.select(this)
+          .style('fill-opacity', 0.8)
+          .transition().duration(500)
+          .attr('d',arc)
+
      });
 
     g.append('text')
