@@ -6,7 +6,8 @@ const pages = [
     {location:'/confetti', file:'confetti'},
     {location:'/stacked-circles', file:'stacked-circles'},
     {location:'/pie-monthly-bills-01', file:'pie-monthly-bills-01'},
-    {location:'/basic-line-chart', file:'basic-line-chart'} //
+    {location:'/basic-line-chart', file:'basic-line-chart'}, //
+    {location:'/animated-line-chart', file:'animated-line-chart'}
 ]
 
 module.exports = pages
