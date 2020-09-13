@@ -12,3 +12,47 @@ const svg = div.append('svg')
                
 const data = Array(10).fill().map(() => d3.randomUniform(1)());
 console.log(data);
+
+const curves = [
+                 'curveLinear'
+                ,'curveBasis'
+                ,'curveBundle'
+                ,'curveCardinal'
+                ,'curveCatmul1Rom'
+                ,'curveMonotoneX'
+                ,'curveMonotoneY'
+                ,'curveNatural'
+                ,'curveStep'
+                ,'curveStepAfter'
+                ,'curveStepBefore'
+                ,'curveBasisClosed'
+               ];
+
+const xScale = d3.scaleLinear()
+                 .domain([0,data.length-1])
+                 .range([0,width]);
+
+const yScale = d3.scaleLinear()
+                 .domain(d3.extent(data))
+                 .range([height,0]);
+
+const line = d3.line()
+               .x((d,i) => xScale(i))
+               .y(d => yScale(d))
+               .curve(d3[curves[11]]);
+
+const path = svg.append('path')
+                .datum(data)
+                .style('stroke','blue')
+                .style('stroke-width',2)
+                .style('fill','none')
+                .attr('d',line);
+
+const totalLength = path.node().getTotalLength();
+
+path
+    .attr('stroke-dasharray',`${totalLength} ${totalLength}`)
+    .attr('stroke-dashoffset', totalLength)
+    .transition().duration(5000)
+    .ease(d3['easeQuad'])
+    .attr('stroke-dashoffset',0);
