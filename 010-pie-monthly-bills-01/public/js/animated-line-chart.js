@@ -10,7 +10,7 @@ const svg = div.append('svg')
                .append('g')
                .attr('transform',`translate(${margin.left},${margin.bottom})`);
                
-const data = Array(10).fill().map(() => d3.randomUniform(1)());
+const data = Array(50).fill().map(() => d3.randomUniform(1)());
 console.log(data);
 
 const curves = [
@@ -39,14 +39,14 @@ const yScale = d3.scaleLinear()
 const line = d3.line()
                .x((d,i) => xScale(i))
                .y(d => yScale(d))
-               .curve(d3[curves[11]]);
+               .curve(d3[curves[5]]);
 
 const path = svg.append('path')
                 .datum(data)
-                .style('stroke','blue')
-                .style('stroke-width',2)
-                .style('fill','none')
-                .attr('d',line);
+                .attr('d',line)
+                .attr('stroke','yellow')
+                .attr('stroke-width',2)
+                .attr('fill','none');
 
 const totalLength = path.node().getTotalLength();
 
